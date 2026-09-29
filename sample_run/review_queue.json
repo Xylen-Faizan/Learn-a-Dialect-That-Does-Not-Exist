@@ -26,12 +26,12 @@
     "subtitle_id": "S003",
     "source_text": "Did you uncover the secret?",
     "nadi_9_text": "[UNSUPPORTED:uncover] [UNSUPPORTED:secret]?",
-    "confidence": 0.2,
+    "confidence": 0.15,
     "decision": "HUMAN_REVIEW",
     "evidence": [],
     "assumptions": [],
     "conflicts": [],
-    "review_question": "No evidence for token(s): uncover, secret. Provide lexical entry.",
+    "review_question": "No verified lexical evidence for token(s): uncover, secret.",
     "affected_rule_ids": []
   }
 ]
