@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Role: Junior AI-Native Engineer](https://img.shields.io/badge/STAGE-Hiring%20Challenge-orange.svg)]()
 
-> Built for the **STAGE AI Engineering Challenge: Learn a Dialect That Does Not Exist (Assignment 3)**.  
+> Built for the **STAGE AI Engineering Challenge: Learn a Dialect That Does Not Exist (Assignment 2)**.  
 > Engineered around **epistemic humility**: the agent abstains from hallucinating, detects conflicting sources, verifies every token independently, and halts production distribution when human review is required.
 
 ---
