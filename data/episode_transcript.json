@@ -1,0 +1,42 @@
+[
+  {
+    "line_id": "S001",
+    "start_time": "00:00:01,200",
+    "end_time": "00:00:03,800",
+    "speaker": "Younger_Brother",
+    "source_text": "You came back, elder brother?",
+    "context": "Reunion after 3 years of estrangement."
+  },
+  {
+    "line_id": "S002",
+    "start_time": "00:00:04,100",
+    "end_time": "00:00:06,500",
+    "speaker": "Elder_Brother",
+    "source_text": "Father is waiting at home.",
+    "context": "Calm informative statement."
+  },
+  {
+    "line_id": "S003",
+    "start_time": "00:00:07,000",
+    "end_time": "00:00:09,400",
+    "speaker": "Younger_Brother",
+    "source_text": "Did you uncover the secret?",
+    "context": "Tense inquiry. 'secret' does not exist in any lexicon."
+  },
+  {
+    "line_id": "S004",
+    "start_time": "00:00:10,000",
+    "end_time": "00:00:12,200",
+    "speaker": "Elder_Brother",
+    "source_text": "I did not see him today.",
+    "context": "Negated past action."
+  },
+  {
+    "line_id": "S005",
+    "start_time": "00:00:13,000",
+    "end_time": "00:00:15,000",
+    "speaker": "Elder_Brother",
+    "source_text": "We must leave now.",
+    "context": "Urgent departure."
+  }
+]

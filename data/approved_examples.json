@@ -1,0 +1,16 @@
+[
+  {
+    "example_id": "example:E01",
+    "source": "Father is at home.",
+    "nadi_9": "Aba kor-te pel.",
+    "verified_by": "lead_linguist",
+    "trust_score": 1.0
+  },
+  {
+    "example_id": "example:E07",
+    "source": "You came back, elder brother?",
+    "nadi_9": "Tal-vok, dura-sh?",
+    "verified_by": "lead_linguist",
+    "trust_score": 1.0
+  }
+]

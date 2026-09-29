@@ -1,0 +1,41 @@
+{
+  "rules": [
+    {
+      "rule_id": "grammar:word-order-sov",
+      "category": "syntax",
+      "description": "Standard sentence order is Subject-Object-Verb (SOV).",
+      "confidence": 0.95,
+      "sources": [
+        "grammar_note:p2"
+      ]
+    },
+    {
+      "rule_id": "grammar:respect-2",
+      "category": "kinship",
+      "description": "Elder relatives require prefix honorific 'tal-' or 'mor-'. Ambiguity exists post-reconciliation.",
+      "confidence": 0.7,
+      "sources": [
+        "grammar_note:p4",
+        "expert_notes:E02"
+      ]
+    },
+    {
+      "rule_id": "grammar:negation-1",
+      "category": "morphology",
+      "description": "Negation attaches suffix '-nai' directly to the verb stem.",
+      "confidence": 0.9,
+      "sources": [
+        "grammar_note:p5"
+      ]
+    },
+    {
+      "rule_id": "grammar:past-tense-1",
+      "category": "tense",
+      "description": "Past actions suffix '-sh' to the verb root.",
+      "confidence": 0.9,
+      "sources": [
+        "grammar_note:p3"
+      ]
+    }
+  ]
+}
