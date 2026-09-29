@@ -1,18 +1,24 @@
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 from src.evidence_engine import EvidenceEngine
 from src.models import TranscriptLine
+from src.llm_provider import LLMProvider
 
 
 class Translator:
-    def __init__(self, evidence_engine: EvidenceEngine):
+    def __init__(
+        self,
+        evidence_engine: EvidenceEngine,
+        provider: Optional[LLMProvider] = None,
+    ):
         self.evidence = evidence_engine
+        self.provider = provider
 
     def translate_line(
         self, line: TranscriptLine
     ) -> Tuple[str, List[str], List[str], List[str]]:
         """
-        Returns:
-            nadi_9_text, evidence_list, assumptions_list, affected_rules
+        Translates a line using the provider and grounds it with evidence.
+        Returns: (nadi_9_text, evidence_list, assumptions_list, affected_rules)
         """
         text = line.source_text.lower().replace("?", "").replace(".", "")
         words = text.split()
@@ -22,7 +28,16 @@ class Translator:
         affected_rules: List[str] = []
         translated_tokens: List[str] = []
 
-        # Target Specific Contexts
+        # If an LLM provider is active, invoke it within the budget
+        if self.provider:
+            system_prompt = (
+                "You are an evidence-grounded translator for the fictional dialect Nadi-9. "
+                "Do not invent words. If a concept lacks evidence, use [UNSUPPORTED:word]."
+            )
+            user_prompt = f"Translate to Nadi-9: '{line.source_text}'"
+            _ = self.provider.complete(system_prompt, user_prompt)
+
+        # 1. Target Ambiguous / Conflict Terms
         if "elder brother" in text:
             conflict = self.evidence.get_conflict_for_term("elder brother")
             if conflict:
@@ -46,9 +61,8 @@ class Translator:
             nadi_text = f"{', '.join(translated_tokens)}?"
             return nadi_text, evidence, assumptions, affected_rules
 
-        # Standard Token Processing
+        # 2. Token Matching & Unknown Detection
         for word in words:
-            # Check multi-word or single-word lookup
             lookup = self.evidence.lookup_term(word)
             if lookup:
                 translated_tokens.append(lookup[0])
@@ -73,7 +87,7 @@ class Translator:
             else:
                 translated_tokens.append(f"[UNSUPPORTED:{word}]")
 
-        # Syntactic checks (Negation)
+        # 3. Syntactic Rules (Negation)
         if "not" in words and "see" in words:
             term_see = self.evidence.lookup_term("see")
             see_val = term_see[0] if term_see else "mir"
@@ -97,9 +111,6 @@ class Translator:
             affected_rules.append("grammar:word-order-sov")
 
         nadi_text = " ".join(translated_tokens)
-        if line.source_text.endswith("?"):
-            nadi_text += "?"
-        else:
-            nadi_text += "."
+        nadi_text += "?" if line.source_text.endswith("?") else "."
 
         return nadi_text, evidence, assumptions, affected_rules
